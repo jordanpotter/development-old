@@ -43,3 +43,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # Enable dhcpcd
 systemctl enable dhcpcd
+
+# Install Git
+pacman -S --noconfirm git
+
+# Install Ansible
+pacman -S --noconfirm python2
+pacman -S --noconfirm ansible

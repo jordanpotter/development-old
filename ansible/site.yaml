@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - common
+  tasks:
+    - name: Upgrade system
+      pacman: update_cache=yes upgrade=yes
