@@ -1,0 +1,3 @@
+---
+- name: Install Zsh
+  pacman: name=zsh state=present

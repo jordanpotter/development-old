@@ -1,3 +1,5 @@
 ---
+- include: zsh.yaml
 - include: vim.yaml
 - include: go.yaml
+- include: user.yaml
