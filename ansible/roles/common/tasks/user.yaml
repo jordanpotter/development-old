@@ -1,5 +1,5 @@
 ---
-- name: Make sure we have a 'wheel' group
+- name: Make sure 'wheel' group exists
   group:
     name: wheel
     state: present
@@ -8,8 +8,8 @@
   lineinfile:
     dest: /etc/sudoers
     state: present
-    regexp: '^%wheel'
-    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    regexp: "^%wheel"
+    line: "%wheel ALL=(ALL) NOPASSWD: ALL"
 
 - name: Create user {{ username }} in 'wheel' group
   user:

@@ -1,0 +1,35 @@
+---
+- name: Install xorg
+  pacman: name=xorg state=present
+
+- name: Install xinit
+  pacman: name=xorg-xinit state=present
+
+- name: Install i3
+  pacman: name=i3 state=present
+
+- name: Install dmenu
+  pacman: name=dmenu state=present
+
+- name: Start xorg on login for {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.zprofile
+    state: present
+    regexp: "^[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx" # DOES THIS WORK?
+    line: "[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx"
+
+- name: Copy default xinitrc to {{ username }}'s home directory
+  copy:
+    src: /etc/X11/xinit/xinitrc
+    remote_src: True
+    dest: /home/{{ username }}/.xinitrc
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644
+
+- name: Start i3 in xinitrc for {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.xinitrc
+    state: present
+    regexp: "^exec i3" # DOES THIS WORK?
+    line: "exec i3"

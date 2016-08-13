@@ -8,8 +8,13 @@ After loading the image onto a machine, run:
     arch-chroot /mnt
     $repo/scripts/setup.sh
 
-Then reboot:
+Remove the installation media, then reboot:
 
     exit
     umount -R /mnt
     reboot
+
+Run Ansible:
+
+    cd $repo/ansible
+    ansible-playbook site.yaml -i hosts --extra-vars "username=$USERNAME password=$PASSWORD"
