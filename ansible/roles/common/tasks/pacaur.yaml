@@ -1,0 +1,40 @@
+---
+- name: Install yajl
+  pacman: name=yajl state=present
+
+- name: Install cower
+  include: aur/pkg.yaml pkg_name=cower makepkg_nonroot_user={{ username }}
+
+- name: Install pacaur
+  include: aur/pkg.yaml pkg_name=pacaur makepkg_nonroot_user={{ username }}
+
+  # - stat: path=/usr/bin/pacaur
+  #   register: pacaur
+
+# - name: Download cower library
+#   git: repo=https://aur.archlinux.org/cower.git dest=/tmp/cower
+#   become: true
+#   become_user: nobody
+#   when: not pacaur.stat.exists
+#
+# - name: Install cower
+#   command: makepkg --skippgpcheck
+#   args:
+#     chdir: /tmp/cower
+#   become: true
+#   become_user: nobody
+#   when: not pacaur.stat.exists
+
+# - name: Download pacaur library
+#   git: repo=https://aur.archlinux.org/pacaur.git dest=/tmp/pacaur
+#   become: true
+#   become_user: nobody
+#   when: not pacaur.stat.exists
+#
+# - name: Install pacaur
+#   command: makepkg -sri
+#   args:
+#     chdir: /tmp/cower
+#   become: true
+#   become_user: nobody
+#   when: not pacaur.stat.exists

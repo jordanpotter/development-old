@@ -11,12 +11,12 @@
 - name: Install dmenu
   pacman: name=dmenu state=present
 
-- name: Start xorg on login for {{ username }}
-  lineinfile:
-    dest: /home/{{ username }}/.zprofile
-    state: present
-    regexp: "^[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx" # DOES THIS WORK?
-    line: "[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx"
+# - name: Start xorg on login for {{ username }}
+#   lineinfile:
+#     dest: /home/{{ username }}/.zprofile
+#     state: present
+#     regexp: "^[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx" # DOES THIS WORK?
+#     line: "[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx"
 
 - name: Copy default xinitrc to {{ username }}'s home directory
   copy:
@@ -26,10 +26,11 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0644
+    force: no
 
 - name: Start i3 in xinitrc for {{ username }}
   lineinfile:
     dest: /home/{{ username }}/.xinitrc
     state: present
-    regexp: "^exec i3" # DOES THIS WORK?
+    regexp: "^exec i3"
     line: "exec i3"
