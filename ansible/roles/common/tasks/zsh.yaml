@@ -7,6 +7,16 @@
   become: yes
   become_user: "{{ username }}"
 
+- name: Copy default zprofile
+  copy:
+    src: /etc/zsh/zprofile
+    remote_src: True
+    dest: /home/{{ username }}/.zprofile
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644
+    force: no
+
 - name: Copy default zshrc
   copy:
     src: /usr/share/oh-my-zsh/zshrc
