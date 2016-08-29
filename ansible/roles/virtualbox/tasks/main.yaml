@@ -1,0 +1,6 @@
+---
+- name: Install virutalbox-guest-modules-arch
+  pacman: name=virutalbox-guest-modules-arch state=present
+
+- name: Install virutalbox-guest-utils
+  pacman: name=virutalbox-guest-utils state=present
