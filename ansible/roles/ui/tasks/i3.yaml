@@ -33,8 +33,14 @@
     mode: 0644
     force: no
 
+- name: Remove default window manager configuration from xinitrc for {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.xinitrc
+    state: absent
+    regexp: '(twm|xclock|xterm)'
+
 - name: Start i3 in xinitrc for {{ username }}
   lineinfile:
     dest: /home/{{ username }}/.xinitrc
     state: present
-    line: "exec i3"
+    line: "exec i3 -V >> ~/.i3log-$(date +'%F-%k-%M-%S') 2>&1"
