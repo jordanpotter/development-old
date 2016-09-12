@@ -3,6 +3,7 @@
   roles:
     - common
     - ui
+    - virtualbox
   tasks:
     - name: Upgrade system
       pacman: update_cache=yes upgrade=yes

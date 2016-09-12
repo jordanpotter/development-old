@@ -1,0 +1,9 @@
+---
+- name: Install Linux headers
+  pacman: name=linux-headers state=present
+
+- name: Install virtualbox-guest-dkms
+  pacman: name=virtualbox-guest-dkms state=present
+
+- name: Install virtualbox-guest-utils
+  pacman: name=virtualbox-guest-utils state=present
