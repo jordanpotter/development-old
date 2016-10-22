@@ -1,0 +1,5 @@
+- name: Start VirtualBox guest services in xinitrc for {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.xinitrc
+    state: present
+    line: "VBoxClient-all"
