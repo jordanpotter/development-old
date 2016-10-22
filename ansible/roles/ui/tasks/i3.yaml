@@ -54,3 +54,20 @@
     dest: /home/{{ username }}/.xinitrc
     state: present
     line: "exec i3 -V >> ~/.i3log-$(date +'%F-%k-%M-%S') 2>&1"
+
+- name: Create .i3 directory for {{ username }}
+  file:
+    path: /home/{{ username }}/.i3
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy i3 config for {{ username }}
+  copy:
+    src: i3config
+    dest: /home/{{ username }}/.i3/config
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644
+    force: yes
