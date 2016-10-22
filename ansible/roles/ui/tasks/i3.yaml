@@ -5,17 +5,21 @@
 - name: Install xinit
   pacman: name=xorg-xinit state=present
 
-- name: Install i3-wm
-  pacman: name=i3-wm state=present
+- name: Install i3-gaps
+  pacaur: name=i3-gaps-git state=present
+  become: yes
+  become_user: "{{ username }}"
 
-- name: Install i3status
-  pacman: name=i3status state=present
+- name: Install i3blocks
+  pacaur: name=i3blocks-git state=present
+  become: yes
+  become_user: "{{ username }}"
 
 - name: Install i3lock
   pacman: name=i3lock state=present
 
-- name: Install dmenu
-  pacman: name=dmenu state=present
+- name: Install rofi
+  pacman: name=rofi state=present
 
 - name: Start xorg on login for {{ username }}
   lineinfile:
