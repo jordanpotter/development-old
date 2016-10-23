@@ -3,6 +3,8 @@
 - include: pacaur.yaml
 - include: wget.yaml
 - include: zsh.yaml
+- include: terminal.yaml
 - include: vim.yaml
 - include: go.yaml
-- include: terminal.yaml
+- include: atom.yaml
+- include: chrome.yaml

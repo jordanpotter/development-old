@@ -1,0 +1,5 @@
+---
+- name: Install chrome
+  pacaur: name=google-chrome state=present
+  become: yes
+  become_user: "{{ username }}"
