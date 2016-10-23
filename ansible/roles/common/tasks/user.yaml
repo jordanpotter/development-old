@@ -19,3 +19,11 @@
     append: yes
     shell: /bin/zsh
     update_password: on_create
+
+- name: Create config directory for {{ username }}
+  file:
+    path: /home/{{ username }}/.config
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755

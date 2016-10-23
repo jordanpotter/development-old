@@ -1,2 +1,4 @@
 ---
+- include: x11.yaml
 - include: i3.yaml
+- include: background.yaml

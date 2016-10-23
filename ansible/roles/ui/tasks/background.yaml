@@ -1,0 +1,8 @@
+---
+- name: Download background image
+  get_url:
+    url: http://i.imgur.com/NuB6XcO.jpg
+    dest: /home/{{ username }}/.config/background.jpg
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0444

@@ -1,10 +1,4 @@
 ---
-- name: Install xorg
-  pacman: name=xorg state=present
-
-- name: Install xinit
-  pacman: name=xorg-xinit state=present
-
 - name: Install i3-gaps
   pacaur: name=i3-gaps-git state=present
   become: yes
@@ -21,47 +15,9 @@
 - name: Install rofi
   pacman: name=rofi state=present
 
-- name: Start xorg on login for {{ username }}
-  lineinfile:
-    dest: /home/{{ username }}/.zprofile
-    state: present
-    line: '[ -z "$DISPLAY" -a "$(fgconsole)" -eq 1 ] && exec startx'
-
-- name: Copy default xinitrc to {{ username }}'s home directory
-  copy:
-    src: /etc/X11/xinit/xinitrc
-    remote_src: True
-    dest: /home/{{ username }}/.xinitrc
-    owner: "{{ username }}"
-    group: "{{ username }}"
-    mode: 0644
-    force: no
-
-- name: Remove default window manager configuration from xinitrc for {{ username }}
-  lineinfile:
-    dest: /home/{{ username }}/.xinitrc
-    state: absent
-    regexp: '(twm|xclock|xterm)'
-
-- name: Get default keyboard layout
-  script: '/usr/bin/cat /etc/vconsole.conf | sed "s/KEYMAP=\(.*\)/\1/"'
-  register: keyboard
-
-- name: Set keyboard layout to {{ keyboard }} in xinitrc for {{ username }}
-  lineinfile:
-    dest: /home/{{ username }}/.xinitrc
-    state: present
-    line: "setxkbmap {{ keyboard.stdout_lines[0] }}"
-
-- name: Start i3 in xinitrc for {{ username }}
-  lineinfile:
-    dest: /home/{{ username }}/.xinitrc
-    state: present
-    line: "exec i3 -V >> ~/.i3log-$(date +'%F-%k-%M-%S') 2>&1"
-
-- name: Create .i3 directory for {{ username }}
+- name: Create i3 configuration directory for {{ username }}
   file:
-    path: /home/{{ username }}/.i3
+    path: /home/{{ username }}/.config/i3
     state: directory
     owner: "{{ username }}"
     group: "{{ username }}"
@@ -70,8 +26,14 @@
 - name: Copy i3 config for {{ username }}
   copy:
     src: i3config
-    dest: /home/{{ username }}/.i3/config
+    dest: /home/{{ username }}/.config/i3/config
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0644
     force: yes
+
+- name: Start i3 in xinitrc for {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.xinitrc
+    state: present
+    line: "exec i3 -c ~/.config/i3/config -V >> ~/.config/i3/log-$(date +'%F-%k-%M-%S') 2>&1"
