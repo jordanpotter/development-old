@@ -1,6 +1,7 @@
 ---
 - include: user.yaml
 - include: pacaur.yaml
+- include: fonts.yaml
 - include: wget.yaml
 - include: zsh.yaml
 - include: terminal.yaml

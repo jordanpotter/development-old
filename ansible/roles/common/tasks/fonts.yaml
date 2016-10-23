@@ -1,0 +1,6 @@
+---
+- name: Install Adobe Source Sans Pro Fonts
+  pacman: name=adobe-source-sans-pro-fonts state=present
+
+- name: Install Adobe Source Code Pro Fonts
+  pacman: name=adobe-source-code-pro-fonts state=present
