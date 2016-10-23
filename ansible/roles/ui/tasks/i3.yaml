@@ -25,7 +25,7 @@
 
 - name: Copy i3 config for {{ username }}
   copy:
-    src: i3config
+    src: i3/config
     dest: /home/{{ username }}/.config/i3/config
     owner: "{{ username }}"
     group: "{{ username }}"

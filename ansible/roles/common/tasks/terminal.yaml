@@ -1,3 +1,20 @@
 ---
 - name: Install termite
   pacman: name=termite state=present
+
+- name: Create termite configuration directory for {{ username }}
+  file:
+    path: /home/{{ username }}/.config/termite
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy termite config for {{ username }}
+  copy:
+    src: termite/config
+    dest: /home/{{ username }}/.config/termite/config
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644
+    force: yes
