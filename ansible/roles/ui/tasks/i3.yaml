@@ -5,7 +5,7 @@
   become_user: "{{ username }}"
 
 - name: Install i3blocks
-  pacaur: name=i3blocks-git state=present
+  pacaur: name=i3blocks-gaps-git state=present
   become: yes
   become_user: "{{ username }}"
 

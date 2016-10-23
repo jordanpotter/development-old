@@ -144,5 +144,13 @@ bar {
         position        top
 }
 
+# Disable borders, which are incompatible with i3-gaps
+for_window [class="^.*"] border pixel 0
+
+# Set gap dimensions
+gaps inner 10
+gaps outer 0
+smart_gaps on
+
 # Set background image
 exec --no-startup-id feh --bg-fill ~/.config/background.jpg
