@@ -1,0 +1,3 @@
+---
+- name: Install compton
+  pacman: name=compton state=present

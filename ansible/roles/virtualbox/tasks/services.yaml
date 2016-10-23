@@ -3,3 +3,4 @@
     dest: /home/{{ username }}/.xinitrc
     state: present
     line: "VBoxClient-all"
+    insertbefore: "^exec i3"

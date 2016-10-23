@@ -152,5 +152,8 @@ gaps inner 10
 gaps outer 0
 smart_gaps on
 
+# Enable compton
+exec --no-startup-id compton -b
+
 # Set background image
-exec --no-startup-id feh --bg-fill ~/.config/background.jpg
+exec_always --no-startup-id feh --bg-fill ~/.config/background.jpg
