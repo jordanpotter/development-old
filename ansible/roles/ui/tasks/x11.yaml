@@ -29,13 +29,3 @@
     dest: /home/{{ username }}/.xinitrc
     state: absent
     regexp: '(twm|xclock|xterm)'
-
-- name: Get default keyboard layout
-  script: '/usr/bin/cat /etc/vconsole.conf | sed "s/KEYMAP=\(.*\)/\1/"'
-  register: keyboard
-
-- name: Set keyboard layout to {{ keyboard }} in xinitrc for {{ username }}
-  lineinfile:
-    dest: /home/{{ username }}/.xinitrc
-    state: present
-    line: "setxkbmap {{ keyboard.stdout_lines[0] }}"
