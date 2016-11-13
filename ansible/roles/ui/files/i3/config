@@ -13,7 +13,7 @@ set $right semicolon
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec termite
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -146,7 +146,7 @@ bar {
         height          32
 
         colors {
-                background      #20202060
+                background      #202020
         }
 }
 
@@ -157,9 +157,6 @@ for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 0
 smart_gaps on
-
-# Enable compton
-exec --no-startup-id compton -b
 
 # Set background image
 exec_always --no-startup-id feh --bg-fill ~/.config/background.jpg

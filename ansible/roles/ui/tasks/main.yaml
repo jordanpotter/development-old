@@ -2,5 +2,4 @@
 - include: x11.yaml
 - include: keyboard.yaml
 - include: i3.yaml
-- include: compton.yaml
 - include: background.yaml
