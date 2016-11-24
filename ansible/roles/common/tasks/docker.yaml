@@ -6,3 +6,4 @@
   user:
     name: "{{ username }}"
     groups: docker
+    append: yes
