@@ -1,4 +1,7 @@
 ---
+- name: Install ttf-font
+  pacman: name=ttf-font state=present
+
 - name: Install Adobe Source Sans Pro Fonts
   pacman: name=adobe-source-sans-pro-fonts state=present
 
