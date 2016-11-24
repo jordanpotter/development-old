@@ -7,5 +7,6 @@
 - include: terminal.yaml
 - include: vim.yaml
 - include: go.yaml
+- include: docker.yaml
 - include: atom.yaml
 - include: chrome.yaml

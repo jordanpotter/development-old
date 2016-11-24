@@ -1,0 +1,8 @@
+---
+- name: Install docker
+  pacman: name=docker state=present
+
+- name: Add user {{ username }} in 'docker' group
+  user:
+    name: "{{ username }}"
+    groups: docker
