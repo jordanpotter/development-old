@@ -2,6 +2,9 @@
 - name: Install go
   pacman: name=go state=present
 
+- name: Install glide
+  pacman: name=glide state=present
+
 - name: Create go directory for user {{ username }}
   file:
     path: /home/{{ username }}/code/go
