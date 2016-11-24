@@ -1,5 +1,7 @@
 ---
 - include: user.yaml
+- include: sudo.yaml
+- include: ssh.yaml
 - include: pacaur.yaml
 - include: fonts.yaml
 - include: wget.yaml

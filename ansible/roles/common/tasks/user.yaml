@@ -1,22 +1,8 @@
 ---
-- name: Make sure 'wheel' group exists
-  group:
-    name: wheel
-    state: present
-
-- name: Allow 'wheel' group to have passwordless sudo
-  lineinfile:
-    dest: /etc/sudoers
-    state: present
-    regexp: "^%wheel"
-    line: "%wheel ALL=(ALL) NOPASSWD: ALL"
-
-- name: Create user {{ username }} in 'wheel' group
+- name: Create user {{ username }}
   user:
     name: "{{ username }}"
     password: "{{ password | password_hash('sha512') }}"
-    groups: wheel
-    append: yes
     shell: /bin/zsh
     update_password: on_create
 
