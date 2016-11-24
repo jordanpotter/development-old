@@ -1,3 +1,24 @@
 ---
 - name: Install go
   pacman: name=go state=present
+
+- name: Create go directory for user {{ username }}
+  file:
+    path: /home/{{ username }}/code/go
+    recurse: yes
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Set GOPATH for user {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.zshrc
+    state: present
+    line: "export GOPATH=$HOME/code/go"
+
+- name: Add GOPATH/bin to PATH for user {{ username }}
+  lineinfile:
+    dest: /home/{{ username }}/.zshrc
+    state: present
+    line: "export PATH=$PATH:$GOPATH/bin"
