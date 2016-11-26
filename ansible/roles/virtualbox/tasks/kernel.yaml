@@ -5,5 +5,5 @@
 - name: Install virtualbox-guest-utils
   pacman: name=virtualbox-guest-utils state=present
 
-- name: Start VirtualBox service
+- name: Start virtualbox service
   service: name=vboxservice enabled=yes state=started
