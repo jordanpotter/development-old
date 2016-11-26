@@ -1,4 +1,14 @@
 ---
+- name: Install freetype2-infinality
+  pacaur: name=freetype2-infinality state=present
+  become: yes
+  become_user: "{{ username }}"
+
+- name: Install fontconfig-infinality
+  pacaur: name=fontconfig-infinality state=present
+  become: yes
+  become_user: "{{ username }}"
+
 - name: Install ttf-font
   pacman: name=ttf-font state=present
 
