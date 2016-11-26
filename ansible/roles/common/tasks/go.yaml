@@ -16,12 +16,14 @@
 
 - name: Set GOPATH for user {{ username }}
   lineinfile:
-    dest: /home/{{ username }}/.zshrc
+    dest: /home/{{ username }}/.zshenv
+    create: yes
     state: present
     line: "export GOPATH=$HOME/code/go"
 
 - name: Add GOPATH/bin to PATH for user {{ username }}
   lineinfile:
-    dest: /home/{{ username }}/.zshrc
+    dest: /home/{{ username }}/.zshenv
+    create: yes
     state: present
     line: "export PATH=$PATH:$GOPATH/bin"
