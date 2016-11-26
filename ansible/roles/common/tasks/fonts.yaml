@@ -2,8 +2,13 @@
 - name: Install ttf-font
   pacman: name=ttf-font state=present
 
-- name: Install Adobe Source Sans Pro Fonts
+- name: Install Adobe Source Sans Pro font
   pacman: name=adobe-source-sans-pro-fonts state=present
 
-- name: Install Adobe Source Code Pro Fonts
+- name: Install Adobe Source Code Pro font
   pacman: name=adobe-source-code-pro-fonts state=present
+
+- name: Install Font Awesome font
+  pacaur: name=ttf-font-awesome state=present
+  become: yes
+  become_user: "{{ username }}"
