@@ -155,7 +155,7 @@ bindsym Mod1+r mode "resize"
 # finds out, if available)
 bar {
         i3bar_command   i3bar -t
-        status_command  i3blocks
+        status_command  i3blocks -c ~/.config/i3/blocks/i3blocks.conf
         position        bottom
         height          32
 
