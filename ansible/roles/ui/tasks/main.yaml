@@ -3,3 +3,4 @@
 - include: keyboard.yaml
 - include: i3.yaml
 - include: background.yaml
+- include: vlc.yaml
