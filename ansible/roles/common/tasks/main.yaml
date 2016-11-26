@@ -4,7 +4,7 @@
 - include: ssh.yaml
 - include: pacaur.yaml
 - include: fonts.yaml
-- include: htop.yaml
+- include: stats.yaml
 - include: wget.yaml
 - include: zsh.yaml
 - include: terminal.yaml

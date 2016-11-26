@@ -1,3 +1,0 @@
----
-- name: Install htop
-  pacman: name=htop state=present

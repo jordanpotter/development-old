@@ -1,0 +1,6 @@
+---
+- name: Install sysstat
+  pacman: name=sysstat state=present
+
+- name: Install htop
+  pacman: name=htop state=present
