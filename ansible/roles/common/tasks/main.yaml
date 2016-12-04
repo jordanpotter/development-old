@@ -11,5 +11,6 @@
 - include: vim.yaml
 - include: go.yaml
 - include: docker.yaml
+- include: rkt.yaml
 - include: chromium.yaml
 - include: atom.yaml

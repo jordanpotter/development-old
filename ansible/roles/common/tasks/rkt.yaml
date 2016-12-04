@@ -1,0 +1,9 @@
+---
+- name: Install rkt
+  pacman: name=rkt state=present
+
+- name: Add user {{ username }} in 'rkt' group
+  user:
+    name: "{{ username }}"
+    groups: rkt
+    append: yes
