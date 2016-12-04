@@ -7,3 +7,6 @@
     name: "{{ username }}"
     groups: rkt
     append: yes
+
+- name: Install acbuild
+  pacman: name=acbuild state=present
