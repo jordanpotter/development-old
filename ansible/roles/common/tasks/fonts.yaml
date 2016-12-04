@@ -1,22 +1,39 @@
 ---
-- name: Install freetype2-infinality
-  pacaur: name=freetype2-infinality state=present
-  become: yes
-  become_user: "{{ username }}"
+- name: Add infinality repositories
+  blockinfile:
+    dest: /etc/pacman.conf
+    block: |
+      [infinality-bundle]
+      Server = http://bohoomil.com/repo/$arch
+      [infinality-bundle-fonts]
+      Server = http://bohoomil.com/repo/fonts
 
-- name: Install fontconfig-infinality
-  pacaur: name=fontconfig-infinality state=present
-  become: yes
-  become_user: "{{ username }}"
+- name: Add infinality repository key
+  command: pacman-key -r 962DDE58
 
-- name: Install ttf-font
-  pacman: name=ttf-font state=present
+- name: Locally sign infinality repository key
+  command: pacman-key --lsign-key 962DDE58
+
+- name: Update pacman cache
+  pacman: update_cache=yes
+
+- name: Install infinality version of freetype2
+  pacman: name=freetype2-infinality-ultimate state=present
+
+- name: Install infinality version of fontconfig
+  pacman: name=fontconfig-infinality-ultimate state=present
+
+- name: Install infinality version of cairo
+  pacman: name=cairo-infinality-ultimate state=present
+
+- name: Install base set of infinality fonts
+  pacman: name=ibfonts-meta-extended state=present
 
 - name: Install Adobe Source Sans Pro font
-  pacman: name=adobe-source-sans-pro-fonts state=present
+  pacman: name=infinality-bundle-fonts/ttf-source-sans-pro-ibx state=present
 
 - name: Install Adobe Source Code Pro font
-  pacman: name=adobe-source-code-pro-fonts state=present
+  pacman: name=infinality-bundle-fonts/ttf-source-code-pro-ibx state=present
 
 - name: Install Font Awesome font
   pacaur: name=ttf-font-awesome state=present
