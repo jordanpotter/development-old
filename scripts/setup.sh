@@ -24,6 +24,9 @@ sed -i "/#en_US\.UTF-8/s/^#//g" /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
+# Install Intel microcode
+pacman -S --noconfirm intel-ucode
+
 # Configure mkinitcpio
 sed -i "/^HOOKS=/s/filesystems/encrypt filesystems/" /etc/mkinitcpio.conf
 mkinitcpio -p linux
